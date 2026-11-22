@@ -12,9 +12,9 @@ BuildPilot is in development. The team has tested navigation, sign-in, and acces
 
 ## Latest completed milestone
 
-**Access checks after permission changes, Phase 1.4C Part 2** was accepted on November 22, 2026.
+**Clearing open project information when access changes, Phase 1.4C Part 3** was accepted on November 22, 2026.
 
-In a local prototype using sample data, the team verified that a fresh request for project information is blocked once someone loses permission, even if they already have the project open. A person who works with two contractors can still access work they are authorized to see at the other company.
+In a local prototype using sample data, the team verified that an open project view clears when someone loses access. After a connection interruption, the view stayed clear until access was checked again. A person who works with two contractors could still open the work they were authorized to see at the other company.
 
 ## Completed milestones
 
@@ -27,10 +27,11 @@ In a local prototype using sample data, the team verified that a fresh request f
 | Phase 1.4C — Company separation design | Accepted design for keeping company information separate and giving team members access to assigned work. |
 | Phase 1.4C Part 1 — Company and project access foundation | Accepted local validation of company access boundaries and project permissions using sample data. |
 | Phase 1.4C Part 2 — Access checks after permission changes | Accepted local validation that new requests are blocked after access is withdrawn, while separately authorized work remains accessible. |
+| Phase 1.4C Part 3 — Clearing open project information | Accepted local prototype validation that open project information clears when access is withdrawn. |
 
 ## What's next
 
-Phase 1.4C Part 3 will test whether BuildPilot clears project information already displayed when someone's access changes. Implementation awaits owner approval. Later work will cover controlled onboarding and the checks needed before a live pilot.
+The next proposed milestone covers controlled setup and management of contractor company accounts. Implementation awaits separate owner approval. A live pilot remains subject to readiness checks and approval.
 
 ## High-level roadmap
 
