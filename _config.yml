@@ -1,0 +1,8 @@
+title: BuildPilot Partner Progress
+description: Development updates, accepted milestones, and the BuildPilot roadmap.
+baseurl: /buildpilot-updates
+markdown: kramdown
+kramdown:
+  input: GFM
+exclude:
+  - README.md

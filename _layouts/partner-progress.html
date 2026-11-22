@@ -1,0 +1,111 @@
+{%- comment -%}
+  Organize the Markdown-rendered README around its existing headings.
+  Unrecognized sections still render in the main report.
+{%- endcomment -%}
+{%- assign sections = content | split: '<h2' -%}
+{%- assign introduction = sections | first -%}
+{%- assign overview = '' -%}
+{%- assign latest = '' -%}
+{%- assign status = '' -%}
+{%- assign next = '' -%}
+{%- assign has_milestones = false -%}
+{%- assign has_roadmap = false -%}
+{%- for section in sections offset:1 -%}
+  {%- assign heading = section | split: '>' | first -%}
+  {%- if heading contains 'id="buildpilot-overview"' -%}
+    {%- assign overview = section -%}
+  {%- elsif heading contains 'id="latest-completed-milestone"' -%}
+    {%- assign latest = section -%}
+  {%- elsif heading contains 'id="current-development-status"' -%}
+    {%- assign status = section -%}
+  {%- elsif heading contains 'id="whats-next"' -%}
+    {%- assign next = section -%}
+  {%- elsif heading contains 'id="completed-milestones"' -%}
+    {%- assign has_milestones = true -%}
+  {%- elsif heading contains 'id="high-level-roadmap"' -%}
+    {%- assign has_roadmap = true -%}
+  {%- endif -%}
+{%- endfor -%}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ site.description | escape }}">
+  <meta name="theme-color" content="#1b1b1d">
+  <title>{{ page.title | default: site.title | escape }}</title>
+  <link rel="stylesheet" href="{{ '/assets/css/partner-progress.css' | relative_url }}">
+</head>
+<body id="top">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header">
+    <div class="frame header-inner">
+      <a class="brand" href="{{ '/' | relative_url }}">
+        <span class="brand-mark" aria-hidden="true">B</span>
+        <span>BuildPilot</span>
+      </a>
+      {% if status != '' or has_milestones or has_roadmap %}
+      <nav class="site-nav" aria-label="Page sections">
+        {% if status != '' %}<a href="#current-development-status">Status</a>{% endif %}
+        {% if has_milestones %}<a href="#completed-milestones">Milestones</a>{% endif %}
+        {% if has_roadmap %}<a href="#high-level-roadmap">Roadmap</a>{% endif %}
+      </nav>
+      {% endif %}
+    </div>
+  </header>
+
+  <main id="main-content" tabindex="-1">
+    <div class="hero">
+      <div class="frame hero-inner{% if latest != '' %} hero-inner--split{% endif %}">
+        <div class="hero-lead">
+          {{ introduction }}
+          {% if overview != '' %}
+          <section class="hero-overview" aria-labelledby="buildpilot-overview">
+            {{ overview | prepend: '<h2' }}
+          </section>
+          {% endif %}
+        </div>
+        {% if latest != '' %}
+        <section class="hero-spotlight" aria-labelledby="latest-completed-milestone">
+          {{ latest | prepend: '<h2' }}
+        </section>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="frame report">
+      {% if status != '' or next != '' %}
+      <div class="summary-grid{% if status != '' and next != '' %} summary-grid--split{% endif %}">
+        {% if status != '' %}
+        <section class="report-card summary-card" aria-labelledby="current-development-status">
+          {{ status | prepend: '<h2' }}
+        </section>
+        {% endif %}
+        {% if next != '' %}
+        <section class="report-card summary-card summary-card--next" aria-labelledby="whats-next">
+          {{ next | prepend: '<h2' }}
+        </section>
+        {% endif %}
+      </div>
+      {% endif %}
+
+      {% for section in sections offset:1 %}
+        {% if section == overview or section == latest or section == status or section == next %}
+          {% continue %}
+        {% endif %}
+        {% assign heading = section | split: '>' | first %}
+        <section class="report-card{% if heading contains 'id="completed-milestones"' %} milestone-card{% elsif heading contains 'id="high-level-roadmap"' %} roadmap-card{% elsif heading contains 'id="important-decisions-and-outstanding-considerations"' %} considerations-card{% endif %}">
+          {{ section | prepend: '<h2' }}
+        </section>
+      {% endfor %}
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="frame footer-inner">
+      <p><strong>BuildPilot</strong><span>Partner progress</span></p>
+      <a href="#top">Back to top</a>
+    </div>
+  </footer>
+</body>
+</html>
