@@ -12,9 +12,9 @@ BuildPilot is in development. The team has tested navigation, sign-in, and acces
 
 ## Latest completed milestone
 
-**Company and project access foundation, Phase 1.4C Part 1** was accepted on November 21, 2026.
+**Access checks after permission changes, Phase 1.4C Part 2** was accepted on November 22, 2026.
 
-In a local prototype, users from one contractor were blocked from opening another contractor's sample project records. The team also verified that a user's role and assignments control the work they can access. This is a step toward letting contractors keep each company's information private and share project work with the people responsible for it.
+In a local prototype using sample data, the team verified that a fresh request for project information is blocked once someone loses permission, even if they already have the project open. A person who works with two contractors can still access work they are authorized to see at the other company.
 
 ## Completed milestones
 
@@ -26,10 +26,11 @@ In a local prototype, users from one contractor were blocked from opening anothe
 | Phase 1.4B — Local sign-in prototype | Accepted prototype lets test users sign in and out. Password recovery and account email workflows are planned for a later stage. |
 | Phase 1.4C — Company separation design | Accepted design for keeping company information separate and giving team members access to assigned work. |
 | Phase 1.4C Part 1 — Company and project access foundation | Accepted local validation of company access boundaries and project permissions using sample data. |
+| Phase 1.4C Part 2 — Access checks after permission changes | Accepted local validation that new requests are blocked after access is withdrawn, while separately authorized work remains accessible. |
 
 ## What's next
 
-The next proposed milestone is to verify that BuildPilot clears project information from an open screen when someone's access changes. Implementation awaits owner approval. Later work will cover controlled onboarding and the checks needed before a live pilot.
+Phase 1.4C Part 3 will test whether BuildPilot clears project information already displayed when someone's access changes. Implementation awaits owner approval. Later work will cover controlled onboarding and the checks needed before a live pilot.
 
 ## High-level roadmap
 
