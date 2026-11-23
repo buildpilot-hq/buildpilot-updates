@@ -1,6 +1,6 @@
 # BuildPilot Partner Dashboard
 
-Updated November 22, 2026
+Updated November 23, 2026
 
 ## BuildPilot overview
 
@@ -8,13 +8,13 @@ BuildPilot is being developed as a workspace for residential contractors. The go
 
 ## Current development status
 
-BuildPilot is in development. The team has tested navigation, sign-in, and access controls in local prototypes using sample data. Customers do not yet have access to a production service. Core construction workflows remain planned.
+BuildPilot is still under development. Recent work focused on how authorized administrators set up contractor accounts, manage company access, and remove access when needed. All recent account security testing used local environments and synthetic accounts. No live customer accounts have been created, and no production service has launched. Core construction workflows remain planned.
 
 ## Latest completed milestone
 
-**Clearing open project information when access changes, Phase 1.4C Part 3** was accepted on November 22, 2026.
+**Phase 1.4D Part 4 Slice 2 — Secure Firebase Authentication Administration** was formally accepted on November 23, 2026.
 
-In a local prototype using sample data, the team verified that an open project view clears when someone loses access. After a connection interruption, the view stayed clear until access was checked again. A person who works with two contractors could still open the work they were authorized to see at the other company.
+In local testing, an older account change could not overwrite a newer approved change. This helps keep account administration reliable when more than one administrator is managing access.
 
 ## Completed milestones
 
@@ -28,10 +28,16 @@ In a local prototype using sample data, the team verified that an open project v
 | Phase 1.4C Part 1 — Company and project access foundation | Accepted local validation of company access boundaries and project permissions using sample data. |
 | Phase 1.4C Part 2 — Access checks after permission changes | Accepted local validation that new requests are blocked after access is withdrawn, while separately authorized work remains accessible. |
 | Phase 1.4C Part 3 — Clearing open project information | Accepted local prototype validation that open project information clears when access is withdrawn. |
+| Phase 1.4D Part 1 — Secure administrator setup and platform access | Accepted local testing verified that platform administration was restricted to authorized administrators. |
+| Phase 1.4D Part 2 — Contractor company and user account provisioning | Accepted local testing verified controlled setup of contractor workspaces and user accounts, with access assigned separately for each company. |
+| Phase 1.4D Part 3 — Company membership and ownership management | Accepted local testing verified changes to team membership and company ownership while keeping each contractor’s access separate. |
+| Phase 1.4D Part 3 — Concurrent membership reliability improvement | Accepted local testing verified that membership records stayed consistent when administrators tried to make changes at the same time. |
+| Phase 1.4D Part 4 Slice 1 — Account suspension and access containment | Accepted local testing verified that suspending an account blocked BuildPilot access across companies while preserving its company membership records. |
+| Phase 1.4D Part 4 Slice 2 — Coordinated authentication account changes | Accepted local testing verified that an older account change could not undo a newer approved change. |
 
 ## What's next
 
-The next proposed milestone covers controlled setup and management of contractor company accounts. Implementation awaits separate owner approval. A live pilot remains subject to readiness checks and approval.
+Phase 1.4D Part 4 Slice 3 is being planned. It covers disabling accounts, ending existing sign-in sessions, and restoring access only after an approved review. Further development and any live pilot deployment require separate owner approval.
 
 ## High-level roadmap
 
@@ -43,4 +49,4 @@ The next proposed milestone covers controlled setup and management of contractor
 
 - Company information stays separate. Access is based on each person's role and assigned work.
 - Internal inspection records will be kept distinct from official municipal or regulatory approvals.
-- Software security and browser reliability follow-ups remain open. Live pilot timing depends on readiness checks and separate owner approval.
+- Browser checks remain open, including checks that existing features still work and a review of where the browser sends requests. Software security follow-ups also remain open. Live pilot timing depends on readiness checks and separate owner approval.
