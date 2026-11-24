@@ -13,7 +13,7 @@ Completed and accepted for development testing. All 189 automated non-browser te
 
 ## Latest completed milestone
 
-**Milestone 15 — Secure Account Disablement and Blocking Session Renewal** was formally accepted on November 23, 2026.
+**Phase 1.4D Part 4 Slice 3A — Account Disablement and Session Revocation** was formally accepted on November 23, 2026.
 
 BuildPilot added administrative controls to disable a user account and revoke its ability to renew sign-in sessions, with an audit trail for those actions. The work also added safeguards against duplicate or interrupted operations and verified that company data remained isolated and existing memberships were preserved.
 
@@ -36,7 +36,7 @@ BuildPilot added administrative controls to disable a user account and revoke it
 | Phase 1.4D Part 3 — Concurrent membership reliability improvement | Accepted local testing verified that membership records stayed consistent when administrators tried to make changes at the same time. |
 | Phase 1.4D Part 4 Slice 1 — Account suspension and access containment | Accepted local testing verified that suspending an account blocked BuildPilot access across companies while preserving its company membership records. |
 | Phase 1.4D Part 4 Slice 2 — Coordinated authentication account changes | Accepted local testing verified that an older account change could not undo a newer approved change. |
-| Milestone 15 — Secure Account Disablement and Blocking Session Renewal | BuildPilot added administrative controls to disable a user account and revoke its ability to renew sign-in sessions, with an audit trail for those actions. The work also added safeguards against duplicate or interrupted operations and verified that company data remained isolated and existing memberships were preserved. |
+| Phase 1.4D Part 4 Slice 3A — Account Disablement and Session Revocation | BuildPilot added administrative controls to disable a user account and revoke its ability to renew sign-in sessions, with an audit trail for those actions. The work also added safeguards against duplicate or interrupted operations and verified that company data remained isolated and existing memberships were preserved. |
 
 
 ## What's next
@@ -56,4 +56,4 @@ Plan and validate the remaining account security and recovery capabilities.
 - Internal inspection records will be kept distinct from official municipal or regulatory approvals.
 - Browser checks remain open, including checks that existing features still work and a review of where the browser sends requests. Software security follow-ups also remain open. Live pilot timing depends on readiness checks and separate owner approval.
 
-<!-- BuildPilot publication: 1 sha256:4e19b1d981f407fc0f036d1fdb4f6b70ac6ab66b5c2c3c92b08debfe158b6883 -->
+<!-- BuildPilot publication: 2 sha256:2328dbc667d0d62dbd0b522952fa75c1dfde53551417dac035a7e2b843977919 -->
