@@ -8,13 +8,15 @@ BuildPilot is being developed as a workspace for residential contractors. The go
 
 ## Current development status
 
-BuildPilot is still under development. Recent work focused on how authorized administrators set up contractor accounts, manage company access, and remove access when needed. All recent account security testing used local environments and synthetic accounts. No live customer accounts have been created, and no production service has launched. Core construction workflows remain planned.
+Completed and accepted for development testing. All 189 automated non-browser tests passed. Validation used local emulators only. Browser verification remains open, account restoration requires separate approval, and the feature has not been deployed to production.
+
 
 ## Latest completed milestone
 
-**Phase 1.4D Part 4 Slice 2 — Secure Firebase Authentication Administration** was formally accepted on November 23, 2026.
+**Milestone 15 — Secure Account Disablement and Blocking Session Renewal** was formally accepted on November 23, 2026.
 
-In local testing, an older account change could not overwrite a newer approved change. This helps keep account administration reliable when more than one administrator is managing access.
+BuildPilot added administrative controls to disable a user account and revoke its ability to renew sign-in sessions, with an audit trail for those actions. The work also added safeguards against duplicate or interrupted operations and verified that company data remained isolated and existing memberships were preserved.
+
 
 ## Completed milestones
 
@@ -34,10 +36,13 @@ In local testing, an older account change could not overwrite a newer approved c
 | Phase 1.4D Part 3 — Concurrent membership reliability improvement | Accepted local testing verified that membership records stayed consistent when administrators tried to make changes at the same time. |
 | Phase 1.4D Part 4 Slice 1 — Account suspension and access containment | Accepted local testing verified that suspending an account blocked BuildPilot access across companies while preserving its company membership records. |
 | Phase 1.4D Part 4 Slice 2 — Coordinated authentication account changes | Accepted local testing verified that an older account change could not undo a newer approved change. |
+| Milestone 15 — Secure Account Disablement and Blocking Session Renewal | BuildPilot added administrative controls to disable a user account and revoke its ability to renew sign-in sessions, with an audit trail for those actions. The work also added safeguards against duplicate or interrupted operations and verified that company data remained isolated and existing memberships were preserved. |
+
 
 ## What's next
 
-Phase 1.4D Part 4 Slice 3 is being planned. It covers disabling accounts, ending existing sign-in sessions, and restoring access only after an approved review. Further development and any live pilot deployment require separate owner approval.
+Plan and validate the remaining account security and recovery capabilities.
+
 
 ## High-level roadmap
 
@@ -50,3 +55,5 @@ Phase 1.4D Part 4 Slice 3 is being planned. It covers disabling accounts, ending
 - Company information stays separate. Access is based on each person's role and assigned work.
 - Internal inspection records will be kept distinct from official municipal or regulatory approvals.
 - Browser checks remain open, including checks that existing features still work and a review of where the browser sends requests. Software security follow-ups also remain open. Live pilot timing depends on readiness checks and separate owner approval.
+
+<!-- BuildPilot publication: 1 sha256:4e19b1d981f407fc0f036d1fdb4f6b70ac6ab66b5c2c3c92b08debfe158b6883 -->
