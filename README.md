@@ -13,7 +13,7 @@ Accepted for local development. Automated browser security verification and inte
 
 ## Latest completed milestone
 
-**Contractor Workspace — Restricted Trade Information** was formally accepted on November 24, 2026.
+**Contractor Workspace — Slice 2C: Restricted Trade Information** was formally accepted on November 24, 2026.
 
 BuildPilot now supports restricted trade information within contractor project workspaces. Access is independently controlled by company, project, and resource-level permissions. The implementation passed local authorization testing and owner visual review, including authorized, empty, and restricted-access scenarios.
 
@@ -37,7 +37,7 @@ BuildPilot now supports restricted trade information within contractor project w
 | Phase 1.4D Part 4 Slice 1 — Account suspension and access containment | Accepted local testing verified that suspending an account blocked BuildPilot access across companies while preserving its company membership records. |
 | Phase 1.4D Part 4 Slice 2 — Coordinated authentication account changes | Accepted local testing verified that an older account change could not undo a newer approved change. |
 | Phase 1.4D Part 4 Slice 3A — Account Disablement and Session Revocation | BuildPilot added administrative controls to disable a user account and revoke its ability to renew sign-in sessions, with an audit trail for those actions. The work also added safeguards against duplicate or interrupted operations and verified that company data remained isolated and existing memberships were preserved. |
-| Contractor Workspace — Restricted Trade Information | BuildPilot now supports restricted trade information within contractor project workspaces. Access is independently controlled by company, project, and resource-level permissions. The implementation passed local authorization testing and owner visual review, including authorized, empty, and restricted-access scenarios. |
+| Contractor Workspace — Slice 2C: Restricted Trade Information | BuildPilot now supports restricted trade information within contractor project workspaces. Access is independently controlled by company, project, and resource-level permissions. The implementation passed local authorization testing and owner visual review, including authorized, empty, and restricted-access scenarios. |
 
 
 ## What's next
@@ -57,4 +57,4 @@ Plan and validate the remaining account security and recovery capabilities.
 - Internal inspection records will be kept distinct from official municipal or regulatory approvals.
 - Browser checks remain open, including checks that existing features still work and a review of where the browser sends requests. Software security follow-ups also remain open. Live pilot timing depends on readiness checks and separate owner approval.
 
-<!-- BuildPilot publication: 3 sha256:9fd0bf36ddedeaf5f2b92e376c75a064e76a1503db5cce1e5d8f8a014affe2e3 -->
+<!-- BuildPilot publication: 4 sha256:17837889d9ce8db5c310b10e9c027d67eaa68e78651dd3ab0c64205a3dfa89d6 -->
