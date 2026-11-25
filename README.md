@@ -1,6 +1,6 @@
 # BuildPilot Partner Dashboard
 
-Updated November 23, 2026
+Updated November 24, 2026
 
 ## BuildPilot overview
 
@@ -8,14 +8,14 @@ BuildPilot is being developed as a workspace for residential contractors. The go
 
 ## Current development status
 
-Completed and accepted for development testing. All 189 automated non-browser tests passed. Validation used local emulators only. Browser verification remains open, account restoration requires separate approval, and the feature has not been deployed to production.
+Accepted for local development. Automated browser security verification and integration with live services remain pending.
 
 
 ## Latest completed milestone
 
-**Phase 1.4D Part 4 Slice 3A — Account Disablement and Session Revocation** was formally accepted on November 23, 2026.
+**Contractor Workspace — Restricted Trade Information** was formally accepted on November 24, 2026.
 
-BuildPilot added administrative controls to disable a user account and revoke its ability to renew sign-in sessions, with an audit trail for those actions. The work also added safeguards against duplicate or interrupted operations and verified that company data remained isolated and existing memberships were preserved.
+BuildPilot now supports restricted trade information within contractor project workspaces. Access is independently controlled by company, project, and resource-level permissions. The implementation passed local authorization testing and owner visual review, including authorized, empty, and restricted-access scenarios.
 
 
 ## Completed milestones
@@ -37,6 +37,7 @@ BuildPilot added administrative controls to disable a user account and revoke it
 | Phase 1.4D Part 4 Slice 1 — Account suspension and access containment | Accepted local testing verified that suspending an account blocked BuildPilot access across companies while preserving its company membership records. |
 | Phase 1.4D Part 4 Slice 2 — Coordinated authentication account changes | Accepted local testing verified that an older account change could not undo a newer approved change. |
 | Phase 1.4D Part 4 Slice 3A — Account Disablement and Session Revocation | BuildPilot added administrative controls to disable a user account and revoke its ability to renew sign-in sessions, with an audit trail for those actions. The work also added safeguards against duplicate or interrupted operations and verified that company data remained isolated and existing memberships were preserved. |
+| Contractor Workspace — Restricted Trade Information | BuildPilot now supports restricted trade information within contractor project workspaces. Access is independently controlled by company, project, and resource-level permissions. The implementation passed local authorization testing and owner visual review, including authorized, empty, and restricted-access scenarios. |
 
 
 ## What's next
@@ -56,4 +57,4 @@ Plan and validate the remaining account security and recovery capabilities.
 - Internal inspection records will be kept distinct from official municipal or regulatory approvals.
 - Browser checks remain open, including checks that existing features still work and a review of where the browser sends requests. Software security follow-ups also remain open. Live pilot timing depends on readiness checks and separate owner approval.
 
-<!-- BuildPilot publication: 2 sha256:2328dbc667d0d62dbd0b522952fa75c1dfde53551417dac035a7e2b843977919 -->
+<!-- BuildPilot publication: 3 sha256:9fd0bf36ddedeaf5f2b92e376c75a064e76a1503db5cce1e5d8f8a014affe2e3 -->
