@@ -1,0 +1,144 @@
+
+name: BuildPilot Partner SMS
+
+on:
+  workflow_dispatch:
+    inputs:
+      notification_type:
+        description: Notification type
+        required: true
+        type: choice
+        options:
+          - System Test
+          - Development Update
+          - Sprint Summary
+          - Meeting Reminder
+          - Feature Ready for Testing
+          - Action Required
+          - Announcement
+        default: System Test
+
+      message:
+        description: Public-safe notification message
+        required: true
+        type: string
+
+      audience:
+        description: Who should receive the notification?
+        required: true
+        type: choice
+        options:
+          - Test Recipient
+          - All Partners
+        default: Test Recipient
+
+permissions: {}
+
+concurrency:
+  group: buildpilot-partner-sms
+  cancel-in-progress: false
+
+jobs:
+  send-sms:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: partner-sms
+    timeout-minutes: 5
+
+    steps:
+      - name: Send BuildPilot notification
+        env:
+          TEXTBEE_API_KEY: ${{ secrets.TEXTBEE_API_KEY }}
+          TEXTBEE_DEVICE_ID: ${{ secrets.TEXTBEE_DEVICE_ID }}
+          PARTNER_PHONE_NUMBERS: ${{ secrets.PARTNER_PHONE_NUMBERS }}
+          TEST_PHONE_NUMBER: ${{ secrets.TEST_PHONE_NUMBER }}
+          NOTIFICATION_TYPE: ${{ inputs.notification_type }}
+          MESSAGE: ${{ inputs.message }}
+          AUDIENCE: ${{ inputs.audience }}
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import os
+          import json
+          import re
+          import urllib.request
+          import urllib.error
+
+          def fail(message):
+              raise SystemExit(message)
+
+          api_key = os.environ.get("TEXTBEE_API_KEY", "")
+          device_id = os.environ.get("TEXTBEE_DEVICE_ID", "")
+          audience = os.environ["AUDIENCE"]
+
+          if not api_key or not device_id:
+              fail("Missing TextBee credentials.")
+
+          if audience == "Test Recipient":
+              raw = os.environ.get("TEST_PHONE_NUMBER", "")
+          elif audience == "All Partners":
+              raw = os.environ.get("PARTNER_PHONE_NUMBERS", "")
+          else:
+              fail("Invalid audience.")
+
+          recipients = list(dict.fromkeys(
+              number.strip()
+              for number in raw.split(",")
+              if number.strip()
+          ))
+
+          if not recipients:
+              fail("No configured recipients.")
+
+          if any(not re.fullmatch(r"\+[1-9]\d{7,14}", n)
+                 for n in recipients):
+              fail("Invalid recipient number format.")
+
+          if audience == "Test Recipient" and len(recipients) != 1:
+              fail("Test mode requires exactly one recipient.")
+
+          body = os.environ["MESSAGE"].strip()
+
+          if not body or len(body) > 500:
+              fail("Message must contain 1 to 500 characters.")
+
+          notification_type = os.environ["NOTIFICATION_TYPE"].upper()
+
+          message = (
+              f"BUILDPILOT | {notification_type}\n\n"
+              f"{body}\n\n"
+              "- BuildPilot"
+          )
+
+          payload = {
+              "deviceId": device_id,
+              "recipients": recipients,
+              "message": message,
+              "simSlotIndex": 1
+          }
+
+          request = urllib.request.Request(
+              "https://api.textbee.dev/api/v1/gateway/send-sms",
+              data=json.dumps(payload).encode("utf-8"),
+              headers={
+                  "x-api-key": api_key,
+                  "Content-Type": "application/json"
+              },
+              method="POST"
+          )
+
+          try:
+              with urllib.request.urlopen(request, timeout=30) as response:
+                  result = json.load(response)
+
+              if result.get("success") is not True:
+                  fail("TextBee did not confirm acceptance.")
+
+              print("SMS request accepted by TextBee.")
+              print("Verify final delivery in TextBee History.")
+
+          except urllib.error.HTTPError as error:
+              fail(f"TextBee API returned HTTP {error.code}.")
+          except Exception:
+              fail("SMS request failed or delivery status is uncertain.")
+          PY
