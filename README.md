@@ -1,6 +1,6 @@
 # BuildPilot Partner Dashboard
 
-Updated November 24, 2026
+Updated November 26, 2026
 
 ## BuildPilot overview
 
@@ -8,14 +8,14 @@ BuildPilot is being developed as a workspace for residential contractors. The go
 
 ## Current development status
 
-Accepted for local development. Browser security verification, browser-level network capture, and live cloud-console verification remain pending. No live application services have been activated or deployed.
+Accepted for offline development only. Live sign-in security validation remains open. No production service has launched.
 
 
 ## Latest completed milestone
 
-**Phase 1.4E Part 1 — Cloud Development Foundation** was formally accepted on November 24, 2026.
+**Gate A v7 Part 2 — Live Authentication Validation Integration** was formally accepted on November 26, 2026.
 
-BuildPilot established an isolated cloud-development foundation for its contractor workspace. The implementation supports authenticated sessions, company- and project-scoped access, and a shared workspace experience across local and cloud-development builds. Automated local tests validated the foundation and preserved existing contractor workspace functionality.
+BuildPilot connected the evidence tools to the sign-in security test runner. Within the tested single-host Windows environment, offline tests confirmed that an approval could not be reused and that cleanup checks could detect a test account even after its email address changed.
 
 
 ## Completed milestones
@@ -39,11 +39,13 @@ BuildPilot established an isolated cloud-development foundation for its contract
 | Phase 1.4D Part 4 Slice 3A — Account Disablement and Session Revocation | BuildPilot added administrative controls to disable a user account and revoke its ability to renew sign-in sessions, with an audit trail for those actions. The work also added safeguards against duplicate or interrupted operations and verified that company data remained isolated and existing memberships were preserved. |
 | Contractor Workspace — Slice 2C: Restricted Trade Information | BuildPilot now supports restricted trade information within contractor project workspaces. Access is independently controlled by company, project, and resource-level permissions. The implementation passed local authorization testing and owner visual review, including authorized, empty, and restricted-access scenarios. |
 | Phase 1.4E Part 1 — Cloud Development Foundation | BuildPilot established an isolated cloud-development foundation for its contractor workspace. The implementation supports authenticated sessions, company- and project-scoped access, and a shared workspace experience across local and cloud-development builds. Automated local tests validated the foundation and preserved existing contractor workspace functionality. |
+| Gate A v7 Part 1 — Offline Evidence Infrastructure | BuildPilot added a way to record security test results and check that the records are complete and unchanged. Offline tests confirmed that interrupted runs and incomplete records could not be counted as successful. |
+| Gate A v7 Part 2 — Live Authentication Validation Integration | BuildPilot connected the evidence tools to the sign-in security test runner. Within the tested single-host Windows environment, offline tests confirmed that an approval could not be reused and that cleanup checks could detect a test account even after its email address changed. |
 
 
 ## What's next
 
-Validate browser security and cloud-development readiness before any hosted deployment, while continuing the remaining account security and recovery work.
+Review and separately authorize a controlled live sign-in security test. Browser behavior, company and project access, and pilot readiness still require verification in cloud development.
 
 
 ## High-level roadmap
@@ -58,4 +60,4 @@ Validate browser security and cloud-development readiness before any hosted depl
 - Internal inspection records will be kept distinct from official municipal or regulatory approvals.
 - Browser checks remain open, including checks that existing features still work and a review of where the browser sends requests. Software security follow-ups also remain open. Live pilot timing depends on readiness checks and separate owner approval.
 
-<!-- BuildPilot publication: 5 sha256:8471228560445c4cb02ecc43640caf3418a83fd23814d6d9a5f716ff9d2ca405 -->
+<!-- BuildPilot publication: 7 sha256:86b4596655701fc4b456ee753beaf0f1fd62ddd780c553a33bc779028c244631 -->
